@@ -194,4 +194,28 @@ footer {
     transition: transform 0.3s;
 }
 
+.owl-carousel{
+    height: 50%;
+}
+.slide{
+    height: 30em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#carousel1{
+    background-image: url("../images/CatCarusel.jpg");
+}
+#carousel2{
+    background-image: url("../images/Dog.webp");
+}
+#carousel3{
+    background-image: url("../images/Horse.jpg");
+}
+#carousel4{
+    background-image: url("../images/Fish.jpg");
+}
+#carousel5{
+    background-image: url("../images/Snake.jpg");
+}
 
