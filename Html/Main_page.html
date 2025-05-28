@@ -13,6 +13,8 @@
     <script src="../OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="../OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <script src="../JavaScript/OwlCarouselAnimals.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../JavaScript/PetExpenseCalculator.js"></script>
 </head>
 
 <body>
@@ -49,15 +51,99 @@
             <p>Мы - команда профессионалов, посвятивших себя заботе о ваших маленьких друзьях.</p>
             <p>Наш центр предлагает полный спектр услуг для домашних животных.</p>
             <div class="owl-carousel">
-                <div id="carousel1" class="slide"></div>
-                <div id="carousel2" class="slide"></div>
-                <div id="carousel3" class="slide"></div>
-                <div id="carousel4" class="slide"></div>
-                <div id="carousel5" class="slide"></div>
-            </div >
+                <div class="slide-container">
+                    <div class="slide" id="carousel1"></div>
+                    <div class="slide-title">Кошки</div>
+                </div>
+                <div class="slide-container">
+                    <div class="slide" id="carousel2"></div>
+                    <div class="slide-title">Собаки</div>
+                </div>
+                <div class="slide-container">
+                    <div class="slide" id="carousel3"></div>
+                    <div class="slide-title">Лошади</div>
+                </div>
+                <div class="slide-container">
+                    <div class="slide" id="carousel4"></div>
+                    <div class="slide-title">Рыбы</div>
+                </div>
+                <div class="slide-container">
+                    <div class="slide" id="carousel5"></div>
+                    <div class="slide-title">Экзотические животные</div>
+                </div>
+            </div>
+
+            <!-- Добавьте этот код после карусели в main.content -->
+            <section class="expense-calculator">
+                <h2>Калькулятор расходов на питомца</h2>
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="animal-type">Тип животного:</label>
+                            <select id="animal-type" class="form-control">
+                                <option value="cat">Кошка</option>
+                                <option value="dog">Собака</option>
+                                <option value="bird">Птица</option>
+                                <option value="fish">Рыбы</option>
+                                <option value="reptile">Рептилия</option>
+                                <option value="small">Мелкие животные (грызуны)</option>
+                                <option value="horse">Лошадь</option>
+                                <option value="exotic">Экзотические животные</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="animal-size">Размер (для собак):</label>
+                            <select id="animal-size" class="form-control" disabled>
+                                <option value="small">Мелкие (до 10 кг)</option>
+                                <option value="medium">Средние (10-25 кг)</option>
+                                <option value="large">Крупные (25+ кг)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time-period">Период:</label>
+                            <select id="time-period" class="form-control">
+                                <option value="month">Месяц</option>
+                                <option value="year">Год</option>
+                                <option value="5years">5 лет</option>
+                                <option value="lifetime">Всю жизнь</option>
+                            </select>
+                        </div>
+
+                        <button id="calculate-btn" class="calculate-btn">Рассчитать</button>
+                    </div>
+
+                    <div class="calculator-results">
+                        <h3>Примерные расходы:</h3>
+                        <div class="results-container">
+                            <div class="result-item">
+                                <span class="result-label">Питание:</span>
+                                <span id="food-cost" class="result-value">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Ветеринария:</span>
+                                <span id="vet-cost" class="result-value">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Аксессуары:</span>
+                                <span id="accessories-cost" class="result-value">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Прочие расходы:</span>
+                                <span id="other-cost" class="result-value">-</span>
+                            </div>
+                            <div class="result-item total">
+                                <span class="result-label">Итого:</span>
+                                <span id="total-cost" class="result-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
-
+<!--при обновлении страницы счетчик не сбрасывается!!!Спросить хорошо это или плохо-->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -78,7 +164,7 @@
             </div>
         </div>
     </footer>
-    
+
 </body>
 
 </html>
