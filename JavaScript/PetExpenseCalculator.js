@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const otherCostElement = document.getElementById('other-cost');
     const totalCostElement = document.getElementById('total-cost');
 
-    // Включаем/выключаем выбор размера в зависимости от типа животного
     animalTypeSelect.addEventListener('change', function () {
         animalSizeSelect.disabled = this.value !== 'dog';
     });
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '5years': 60,
         lifetime: {
             cat: 180, // 15 лет
-            dog: 144, // 12 лет (среднее для всех размеров)
+            dog: 144, // 12 лет
             bird: 120, // 10 лет
             fish: 60, // 5 лет
             reptile: 240, // 20 лет

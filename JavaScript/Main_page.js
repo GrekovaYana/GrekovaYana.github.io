@@ -26,41 +26,61 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Загрузка данных из JSON
-    fetch('../JSON/cats.json')
-        .then(response => response.json())
+document.addEventListener('DOMContentLoaded', function() {
+    // Получаем имя файла из URL
+    const pageName = document.body.dataset.page || 
+                 window.location.pathname.split('/').pop().split('.')[0];
+    
+   //Нам необходима проверка на животное. В зависимости от того, страница какого животного загружается, такой JSON-файл и должен подключаться
+    const pageConfig = {
+        'cats': { json: 'cats.json', key: 'cats' },
+        'dogs': { json: 'dogs.json', key: 'dogs' },
+        'horses': { json: 'horses.json', key: 'horses' },
+        'fishes': { json: 'fishes.json', key: 'fishes' },
+        'exotic_animals': { json: 'exotic_animals.json', key: 'exotic_animals' }
+    };
+    
+
+    const config = pageConfig[pageName] || pageConfig['cats'];
+    
+
+    fetch(`../JSON/${config.json}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Ошибка загрузки данных');
+            return response.json();
+        })
         .then(data => {
+            const breeds = data[config.key];
             const container = document.getElementById('breeds-container');
-            container.innerHTML = ''; // Очищаем сообщение о загрузке
-
-            data.forEach(breed => {
-                const card = document.createElement('div');
-                card.className = 'breed-card';
-
-                card.innerHTML = `
-                            <img src="${breed.image}" alt="${breed.name}" class="breed-image">
-                            <div class="breed-info">
-                                <h2 class="breed-name">${breed.name}</h2>
-                                <p class="breed-description">${breed.description}</p>
-                                <div class="breed-features">
-                                    <ul class="feature-list">
-                                        ${breed.features.map(feature => `<li>${feature}</li>`).join('')}
-                                    </ul>
-                                </div>
-                                <div class="breed-lifespan">Продолжительность жизни: ${breed.lifespan}</div>
-                            </div>
-                        `;
-
-                container.appendChild(card);
-            });
+            
+            if (!breeds || !Array.isArray(breeds)) {
+                throw new Error('Некорректный формат данных');
+            }
+            
+            container.innerHTML = breeds.map(breed => `
+                <div class="breed-card">
+                    <img src="${breed.image}" alt="${breed.name}" class="breed-image">
+                    <div class="breed-info">
+                        <h2>${breed.name}</h2>
+                        <p>${breed.description}</p>
+                        ${breed.features ? `
+                        <div class="breed-features">
+                            <ul>${breed.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                        </div>` : ''}
+                        ${breed.lifespan ? `
+                        <div class="breed-lifespan">Продолжительность жизни: ${breed.lifespan}</div>` : ''}
+                    </div>
+                </div>
+            `).join('');
         })
         .catch(error => {
-            console.error('Ошибка загрузки данных:', error);
-            document.getElementById('breeds-container').innerHTML =
-                '<p class="error">Не удалось загрузить информацию о породах. Пожалуйста, попробуйте позже.</p>';
+            console.error('Ошибка:', error);
+            const container = document.getElementById('breeds-container');
+            if (container) {
+                container.innerHTML = `
+                    <p class="error">Ошибка загрузки данных. Пожалуйста, попробуйте позже.</p>
+                    <p>${error.message}</p>
+                `;
+            }
         });
-
-
 });
-
