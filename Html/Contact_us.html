@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Friend - Контакты</title>
+    <link href="../Css/Main_page.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="../JavaScript/Main_page.js" type="text/javascript" rel="stylesheet" media="screen">
+    <script src="../JavaScript/Main_page.js"></script>
+    <link rel="shortcut icon" href="../images/BirdForHeader.png">
+    <script src="../JavaScript/jquery-3.7.1.min.js"></script>
+    <script src="../OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="../OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <script src="../JavaScript/OwlCarouselAnimals.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../JavaScript/PetExpenseCalculator.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"><img src="../images/BirAndLogo.png" alt="Логотип компании"></div>
+        <div class="burger-menu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+
+        <nav class="menu">
+            <a href="../Html/Enter.html" class="menu-btn">Войти</a>
+            <a href="../Html/About.html" class="menu-btn">О нас</a>
+            <a href="../Html/Contact_us.html" class="menu-btn">Свяжитесь с нами</a>
+            <a href="../Html/Contacts.html" class="menu-btn">Контакты</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-link">Главная</a>
+            <a href="Cats.html" class="sidebar-link">Кошки</a>
+            <a href="Dogs.html" class="sidebar-link">Собаки</a>
+            <a href="Horse.html" class="sidebar-link">Лошади</a>
+            <a href="Fish.html" class="sidebar-link">Рыбы</a>
+            <a href="ExoticAnimals.html" class="sidebar-link">Экзотические животные</a>
+        </aside>
+        <div class="content">
+            <div class="contact-info">
+                <h2>Как с нами связаться</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3><i class="fas fa-headset"></i> Служба поддержки</h3>
+                        <p>Наша команда поддержки доступна с понедельника по пятницу с 9:00 до 18:00. Мы отвечаем на все
+                            вопросы, связанные с подбором питомца и уходом за животными.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3><i class="fas fa-paw"></i> Для приютов</h3>
+                        <p>Если вы представляете приют для животных и хотите стать нашим партнером, напишите нам на
+                            email: partners@littlefriend.ru</p>
+                    </div>
+                    <div class="info-item">
+                        <h3><i class="fas fa-business-time"></i> Бизнес-вопросы</h3>
+                        <p>По вопросам сотрудничества и рекламы обращайтесь по телефону: +7 (123) 456-78-91 или пишите
+                            на business@littlefriend.ru</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Форма обратной связи</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ваше ФИО</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Тема</label>
+                        <select id="subject" class="form-control">
+                            <option>Общий вопрос</option>
+                            <option>Техническая поддержка</option>
+                            <option>Сотрудничество</option>
+                            <option>Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить сообщение</button>
+                </form>
+            </div>
+
+            <div class="faq-section">
+                <h2>Частые вопросы</h2>
+                <div class="faq-item">
+                    <h3>Как быстро вы отвечаете на сообщения?</h3>
+                    <p>Мы стремимся отвечать на все обращения в течение 24 часов в рабочие дни.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Можно ли прийти в офис без предупреждения?</h3>
+                    <p>Наш офис открыт для посещений только по предварительной записи. Пожалуйста, позвоните нам перед
+                        визитом.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Есть ли у вас мобильное приложение?</h3>
+                    <p>Нет, но мы стремимся к этому. Ожидайте следующих обновлений!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Компания</h3>
+                <a href="About.html" class="footer-link">О нас</a>
+                <a href="Contact_us.html" class="footer-link">Свяжитесь с нами</a>
+                <a href="Contacts.html" class="footer-link">Контакты</a>
+            </div>
+            <div class="footer-column">
+                <h3>Информация</h3>
+                 <a href="What_is.html" class="footer-link">Что такое Little Friend?</a>
+                <div class="social-icons">
+                    <a href="https://dzen.ru/knigajivotnih"><img src="../images/IconDzen.png" alt="Dzen"></a>
+                    <a href="https://t.me/s/animals_n1"><img src="../images/IconTelegram.png" alt="Telegram"></a>
+                    <a href="https://vk.com/kot_media"><img src="../images/Wk.png" alt="Wk"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
