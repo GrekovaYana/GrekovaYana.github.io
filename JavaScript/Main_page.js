@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Получаем имя файла из URL
-    const pageName = document.body.dataset.page || 
-                 window.location.pathname.split('/').pop().split('.')[0];
-    
-   //Нам необходима проверка на животное. В зависимости от того, страница какого животного загружается, такой JSON-файл и должен подключаться
+    const pageName = document.body.dataset.page ||
+        window.location.pathname.split('/').pop().split('.')[0];
+
+    //Нам необходима проверка на животное. В зависимости от того, страница какого животного загружается, такой JSON-файл и должен подключаться
     const pageConfig = {
         'cats': { json: 'cats.json', key: 'cats' },
         'dogs': { json: 'dogs.json', key: 'dogs' },
@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'fishes': { json: 'fishes.json', key: 'fishes' },
         'exotic_animals': { json: 'exotic_animals.json', key: 'exotic_animals' }
     };
-    
+
 
     const config = pageConfig[pageName] || pageConfig['cats'];
-    
+
 
     fetch(`../JSON/${config.json}`)
         .then(response => {
@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             const breeds = data[config.key];
             const container = document.getElementById('breeds-container');
-            
+
             if (!breeds || !Array.isArray(breeds)) {
                 throw new Error('Некорректный формат данных');
             }
-            
+
             container.innerHTML = breeds.map(breed => `
                 <div class="breed-card">
                     <img src="${breed.image}" alt="${breed.name}" class="breed-image">
@@ -84,3 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 });
+function showForm(formId) {
+    document.getElementById("registration").style.display = "none";
+    document.getElementById("enter").style.display = "none";
+    
+    document.getElementById(formId).style.display = "block";
+}

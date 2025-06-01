@@ -37,56 +37,62 @@
 
     <div class="main-content">
         <aside class="sidebar">
-            <a href="#" class="sidebar-link">Главная</a>
-            <a href="#" class="sidebar-link">Кошки</a>
-            <a href="#" class="sidebar-link">Собаки</a>
-            <a href="#" class="sidebar-link">Лошади</a>
-            <a href="#" class="sidebar-link">Рыбы</a>
-            <a href="#" class="sidebar-link">Экзотические животные</a>
+            <a href="../index.html" class="sidebar-link">Главная</a>
+            <a href="Cats.html" class="sidebar-link">Кошки</a>
+            <a href="Dogs.html" class="sidebar-link">Собаки</a>
+            <a href="Horse.html" class="sidebar-link">Лошади</a>
+            <a href="Fish.html" class="sidebar-link">Рыбы</a>
+            <a href="ExoticAnimals.html" class="sidebar-link">Экзотические животные</a>
         </aside>
         <!--Элемент <aside> HTML представляет собой часть документа, содержимое которой лишь косвенно связано с основным содержанием документа. Вспомогательные элементы часто представлены в виде боковых панелей или выносных блоков.-->
 
         <main class="content">
-            <button id="enterButton">Войти</button>
-            <button id="registrationButton">Зарегистрироваться</button>
+    <div>
+        <button id="enterButton" onclick="showForm('enter')">Войти</button>
+        <button id="registrationButton" onclick="showForm('registration')">Зарегистрироваться</button>
+    </div>
 
-            <div id="registration" style="display: none">
-                Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
-                Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
-                Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
-                Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
-                Ваш номер <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Ваш номер">
-                <br>
-                Дата рождения <input type="date" id="dateOfBirth"><br>
-                E-mail: <input type="email" id="email"><br>
-                <div class="form-container">
-                    <div class="form-group">
-                        <label for="settlement-type">Тип населенного пункта:</label>
-                        <select id="settlement-type" name="settlement-type">
-                            <option value="">Выберите тип</option>
-                            <option value="city">Город</option>
-                            <option value="village">Село</option>
-                            <option value="town">Посёлок</option>
-                            <option value="urban-village">Посёлок городского типа</option>
-                            <option value="hamlet">Деревня</option>
-                            <option value="farm">Хутор</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </div>
+    <div id="registration" style="display: none">
+        Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
+        Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
+        Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
+        Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
+        Ваш номер <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Ваш номер">
+        <br>
+        Дата рождения <input type="date" id="dateOfBirth"><br>
+        E-mail: <input type="email" id="email"><br>в
+        <div class="form-container">
+            <div class="form-group">
+                <label for="settlement-type">Тип населенного пункта:</label>
+                <select id="settlement-type" name="settlement-type">
+                    <option value="">Выберите тип</option>
+                    <option value="city">Город</option>
+                    <option value="village">Село</option>
+                    <option value="town">Посёлок</option>
+                    <option value="urban-village">Посёлок городского типа</option>
+                    <option value="hamlet">Деревня</option>
+                    <option value="farm">Хутор</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
 
-                    <div class="form-group">
-                        <label for="settlement-name">Название населенного пункта:</label>
-                        <input type="text" id="settlement-name" name="settlement-name" placeholder="Введите название">
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="settlement-name">Название населенного пункта:</label>
+                <input type="text" id="settlement-name" name="settlement-name"
+                    placeholder="Введите название">
             </div>
-            <div id="enter" style="display: none">
-                Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
-                Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
-                Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
-                Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
-            </div>
-        </main>
+        </div>
+         <button type="submit" class="submit-form-btn">Зарегистрироваться</button>
+    </div>
+    <div id="enter" style="display: none">
+        Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
+        Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
+        Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
+        Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
+        <button type="submit" class="submit-form-btn">Войти</button>
+    </div>
+</main>
+
     </div>
     <!--при обновлении страницы счетчик не сбрасывается!!!Спросить хорошо это или плохо-->
     <footer>
