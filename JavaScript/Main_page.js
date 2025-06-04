@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const animalLabels = document.querySelectorAll('.animal-label');
 
             animalLabels.forEach(label => {
+                label.setAttribute('draggable', 'true');
+
                 label.addEventListener('dragstart', function (e) {
                     e.dataTransfer.setData('text/plain', this.dataset.animal);
                     this.classList.add('dragging');
@@ -157,25 +159,67 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.classList.remove('highlight');
 
                     const animalType = e.dataTransfer.getData('text/plain');
-                    const correctAnimal = this.dataset.animal;
-
-                    const existingLabel = this.querySelector('.animal-label');
-                    if (existingLabel) {
-                        document.querySelector('.animal-labels').appendChild(existingLabel);
-                        existingLabel.classList.remove('placed');
-                    }
-
-                    const draggedLabel = document.querySelector(`.animal-label[data-animal="${animalType}"]`);
-
-                    if (draggedLabel) {
-                        this.innerHTML = '';
-                        this.appendChild(draggedLabel);
-                        draggedLabel.classList.add('placed');
-                        draggedLabel.style.cursor = 'default';
-                        this.dataset.userAnswer = animalType;
-                    }
+                    handleDrop(this, animalType);
                 });
             });
+
+            if ('ontouchstart' in window) {
+                let draggedLabel = null;
+
+                animalLabels.forEach(label => {
+                    label.addEventListener('touchstart', function (e) {
+                        draggedLabel = this;
+                        this.classList.add('dragging');
+                        e.preventDefault();
+                    }, { passive: false });
+
+                    label.addEventListener('touchend', function () {
+                        if (draggedLabel) {
+                            draggedLabel.classList.remove('dragging');
+                            draggedLabel = null;
+                        }
+                    });
+                });
+
+                animalImages.forEach(image => {
+                    image.addEventListener('touchmove', function (e) {
+                        e.preventDefault();
+                    }, { passive: false });
+
+                    image.addEventListener('touchend', function (e) {
+                        if (draggedLabel) {
+                            this.classList.add('highlight');
+                            setTimeout(() => {
+                                this.classList.remove('highlight');
+                            }, 200);
+
+                            const animalType = draggedLabel.dataset.animal;
+                            handleDrop(this, animalType);
+                            draggedLabel = null;
+                        }
+                    });
+                });
+            }
+        }
+
+        function handleDrop(targetElement, animalType) {
+            const correctAnimal = targetElement.dataset.animal;
+
+            const existingLabel = targetElement.querySelector('.animal-label');
+            if (existingLabel) {
+                document.querySelector('.animal-labels').appendChild(existingLabel);
+                existingLabel.classList.remove('placed');
+            }
+
+            const draggedLabel = document.querySelector(`.animal-label[data-animal="${animalType}"]`);
+
+            if (draggedLabel) {
+                targetElement.innerHTML = '';
+                targetElement.appendChild(draggedLabel);
+                draggedLabel.classList.add('placed');
+                draggedLabel.style.cursor = 'default';
+                targetElement.dataset.userAnswer = animalType;
+            }
         }
 
         function checkAnimalMatching() {
@@ -205,114 +249,114 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function calculateResults() {
-    const formData = new FormData(mainTestForm);
-    const answers = Object.fromEntries(formData.entries());
+            const formData = new FormData(mainTestForm);
+            const answers = Object.fromEntries(formData.entries());
 
-    testScore = {
-        cat: 0,
-        dog: 0,
-        horse: 0,
-        fish: 0,
-        snake: 0,
-        none: 0
-    };
+            testScore = {
+                cat: 0,
+                dog: 0,
+                horse: 0,
+                fish: 0,
+                snake: 0,
+                none: 0
+            };
 
-    switch (answers.time) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.cat += 2; testScore.snake += 1; break;
-        case '3': testScore.dog += 2; testScore.horse += 1; break;
-        case '4': testScore.dog += 3; testScore.horse += 2; break;
-    }
+            switch (answers.time) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.cat += 2; testScore.snake += 1; break;
+                case '3': testScore.dog += 2; testScore.horse += 1; break;
+                case '4': testScore.dog += 3; testScore.horse += 2; break;
+            }
 
-    switch (answers.size) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.cat += 3; testScore.dog += 1; break;
-        case '3': testScore.dog += 3; testScore.horse += 1; break;
-        case '4': testScore.horse += 3; testScore.dog += 1; break;
-    }
-
-
-    switch (answers.budget) {
-        case '1': testScore.fish += 3; testScore.none += 2; break;
-        case '2': testScore.cat += 2; testScore.snake += 1; break;
-        case '3': testScore.dog += 2; testScore.horse += 1; break;
-        case '4': testScore.horse += 3; testScore.dog += 2; break;
-    }
+            switch (answers.size) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.cat += 3; testScore.dog += 1; break;
+                case '3': testScore.dog += 3; testScore.horse += 1; break;
+                case '4': testScore.horse += 3; testScore.dog += 1; break;
+            }
 
 
-    switch (answers.communication) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.cat += 2; testScore.snake += 1; break;
-        case '3': testScore.dog += 2; testScore.cat += 1; break;
-        case '4': testScore.dog += 3; testScore.horse += 2; break;
-    }
+            switch (answers.budget) {
+                case '1': testScore.fish += 3; testScore.none += 2; break;
+                case '2': testScore.cat += 2; testScore.snake += 1; break;
+                case '3': testScore.dog += 2; testScore.horse += 1; break;
+                case '4': testScore.horse += 3; testScore.dog += 2; break;
+            }
 
-    switch (answers.travel) {
-        case '1': testScore.none += 3; testScore.fish += 1; break;
-        case '2': testScore.cat += 2; testScore.fish += 1; break;
-        case '3': testScore.dog += 1; testScore.horse += 1; break;
-        case '4': testScore.dog += 2; testScore.horse += 2; break;
-    }
 
-  
-    switch (answers.allergy) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.snake += 3; testScore.fish += 2; break;
-        case '3': testScore.fish += 2; testScore.snake += 1; break;
-        case '4': break; 
-    }
+            switch (answers.communication) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.cat += 2; testScore.snake += 1; break;
+                case '3': testScore.dog += 2; testScore.cat += 1; break;
+                case '4': testScore.dog += 3; testScore.horse += 2; break;
+            }
 
-    switch (answers.experience) {
-        case '1': testScore.fish += 2; testScore.none += 1; break;
-        case '2': testScore.cat += 2; break;
-        case '3': testScore.dog += 2; break;
-        case '4': testScore.horse += 3; testScore.snake += 2; break;
-    }
+            switch (answers.travel) {
+                case '1': testScore.none += 3; testScore.fish += 1; break;
+                case '2': testScore.cat += 2; testScore.fish += 1; break;
+                case '3': testScore.dog += 1; testScore.horse += 1; break;
+                case '4': testScore.dog += 2; testScore.horse += 2; break;
+            }
 
-    switch (answers.housing) {
-        case '1': testScore.fish += 3; testScore.none += 2; break;
-        case '2': testScore.cat += 2; testScore.fish += 1; break;
-        case '3': testScore.dog += 2; testScore.cat += 1; break;
-        case '4': testScore.dog += 3; testScore.horse += 3; break;
-    }
 
-    switch (answers.activity) {
-        case '1': testScore.fish += 3; testScore.cat += 1; break;
-        case '2': testScore.cat += 2; testScore.snake += 1; break;
-        case '3': testScore.dog += 2; testScore.horse += 1; break;
-        case '4': testScore.dog += 3; testScore.horse += 3; break;
-    }
+            switch (answers.allergy) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.snake += 3; testScore.fish += 2; break;
+                case '3': testScore.fish += 2; testScore.snake += 1; break;
+                case '4': break;
+            }
 
-    switch (answers.noise) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.cat += 2; testScore.fish += 1; break;
-        case '3': testScore.dog += 1; testScore.horse += 1; break;
-        case '4': testScore.dog += 3; break;
-    }
+            switch (answers.experience) {
+                case '1': testScore.fish += 2; testScore.none += 1; break;
+                case '2': testScore.cat += 2; break;
+                case '3': testScore.dog += 2; break;
+                case '4': testScore.horse += 3; testScore.snake += 2; break;
+            }
 
-    switch (answers.duration) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.cat += 2; testScore.dog += 1; break;
-        case '3': testScore.dog += 3; testScore.horse += 1; break;
-        case '4': testScore.horse += 3; testScore.dog += 2; break;
-    }
+            switch (answers.housing) {
+                case '1': testScore.fish += 3; testScore.none += 2; break;
+                case '2': testScore.cat += 2; testScore.fish += 1; break;
+                case '3': testScore.dog += 2; testScore.cat += 1; break;
+                case '4': testScore.dog += 3; testScore.horse += 3; break;
+            }
 
-    switch (answers.reason) {
-        case '1': testScore.fish += 3; testScore.snake += 2; break;
-        case '2': testScore.cat += 3; testScore.dog += 1; break;
-        case '3': testScore.dog += 3; testScore.cat += 2; break;
-        case '4': testScore.dog += 3; testScore.horse += 3; break;
-    }
+            switch (answers.activity) {
+                case '1': testScore.fish += 3; testScore.cat += 1; break;
+                case '2': testScore.cat += 2; testScore.snake += 1; break;
+                case '3': testScore.dog += 2; testScore.horse += 1; break;
+                case '4': testScore.dog += 3; testScore.horse += 3; break;
+            }
 
-    const maxScore = Math.max(...Object.values(testScore));
-    const results = {};
+            switch (answers.noise) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.cat += 2; testScore.fish += 1; break;
+                case '3': testScore.dog += 1; testScore.horse += 1; break;
+                case '4': testScore.dog += 3; break;
+            }
 
-    for (const [animal, score] of Object.entries(testScore)) {
-        results[animal] = Math.round((score / maxScore) * 100);
-    }
+            switch (answers.duration) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.cat += 2; testScore.dog += 1; break;
+                case '3': testScore.dog += 3; testScore.horse += 1; break;
+                case '4': testScore.horse += 3; testScore.dog += 2; break;
+            }
 
-    displayResults(results);
-}
+            switch (answers.reason) {
+                case '1': testScore.fish += 3; testScore.snake += 2; break;
+                case '2': testScore.cat += 3; testScore.dog += 1; break;
+                case '3': testScore.dog += 3; testScore.cat += 2; break;
+                case '4': testScore.dog += 3; testScore.horse += 3; break;
+            }
+
+            const maxScore = Math.max(...Object.values(testScore));
+            const results = {};
+
+            for (const [animal, score] of Object.entries(testScore)) {
+                results[animal] = Math.round((score / maxScore) * 100);
+            }
+
+            displayResults(results);
+        }
 
         function displayResults(results) {
             if (results.none < Math.max(results.cat, results.dog, results.horse, results.fish, results.snake)) {
