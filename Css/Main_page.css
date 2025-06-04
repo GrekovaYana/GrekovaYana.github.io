@@ -2959,3 +2959,32 @@ body.dark-theme .page-title:after {
         grid-template-columns: 1fr;
     }
 }
+.animal-label.selected {
+    border: 2px solid #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.mobile-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 130px;
+}
+
+.mobile-select.correct {
+    border: 2px solid #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.mobile-select.incorrect {
+    border: 2px solid #f44336;
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+@media (max-width: 768px) {
+    .animal-labels {
+        display: none;
+    }
+}

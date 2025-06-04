@@ -128,77 +128,129 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function setupDragAndDrop() {
-            const animalImages = document.querySelectorAll('.animal-image');
-            const animalLabels = document.querySelectorAll('.animal-label');
+            
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            animalLabels.forEach(label => {
-                label.setAttribute('draggable', 'true');
+            if (isMobile) {
+                
+                const animalImages = document.querySelectorAll('.animal-image');
+                animalImages.forEach(image => {
+                    const animalType = image.dataset.animal;
+                    const select = document.createElement('select');
+                    select.className = 'mobile-select';
+                    select.dataset.target = animalType;
 
-                label.addEventListener('dragstart', function (e) {
-                    e.dataTransfer.setData('text/plain', this.dataset.animal);
-                    this.classList.add('dragging');
+                    
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = 'Выберите';
+                    select.appendChild(defaultOption);
+
+                    
+                    const animals = ['cat', 'dog', 'horse', 'fish', 'snake'];
+                    animals.forEach(animal => {
+                        const option = document.createElement('option');
+                        option.value = animal;
+                        option.textContent = getAnimalName(animal);
+                        select.appendChild(option);
+                    });
+
+                    
+                    image.innerHTML = '';
+                    image.appendChild(select);
+
+                   
+                    select.addEventListener('change', function () {
+                        image.dataset.userAnswer = this.value;
+                    });
                 });
 
-                label.addEventListener('dragend', function () {
-                    this.classList.remove('dragging');
-                });
-            });
-
-            animalImages.forEach(image => {
-                image.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                    this.classList.add('highlight');
-                });
-
-                image.addEventListener('dragleave', function () {
-                    this.classList.remove('highlight');
-                });
-
-                image.addEventListener('drop', function (e) {
-                    e.preventDefault();
-                    this.classList.remove('highlight');
-
-                    const animalType = e.dataTransfer.getData('text/plain');
-                    handleDrop(this, animalType);
-                });
-            });
-
-            if ('ontouchstart' in window) {
-                let draggedLabel = null;
+               
+                const labelsContainer = document.querySelector('.animal-labels');
+                if (labelsContainer) {
+                    labelsContainer.remove();
+                }
+            } else {
+               
+                const animalImages = document.querySelectorAll('.animal-image');
+                const animalLabels = document.querySelectorAll('.animal-label');
 
                 animalLabels.forEach(label => {
-                    label.addEventListener('touchstart', function (e) {
-                        draggedLabel = this;
-                        this.classList.add('dragging');
-                        e.preventDefault();
-                    }, { passive: false });
+                    label.setAttribute('draggable', 'true');
 
-                    label.addEventListener('touchend', function () {
-                        if (draggedLabel) {
-                            draggedLabel.classList.remove('dragging');
-                            draggedLabel = null;
-                        }
+                    label.addEventListener('dragstart', function (e) {
+                        e.dataTransfer.setData('text/plain', this.dataset.animal);
+                        this.classList.add('dragging');
+                    });
+
+                    label.addEventListener('dragend', function () {
+                        this.classList.remove('dragging');
                     });
                 });
 
                 animalImages.forEach(image => {
-                    image.addEventListener('touchmove', function (e) {
+                    image.addEventListener('dragover', function (e) {
                         e.preventDefault();
-                    }, { passive: false });
+                        this.classList.add('highlight');
+                    });
 
-                    image.addEventListener('touchend', function (e) {
-                        if (draggedLabel) {
-                            this.classList.add('highlight');
-                            setTimeout(() => {
-                                this.classList.remove('highlight');
-                            }, 200);
+                    image.addEventListener('dragleave', function () {
+                        this.classList.remove('highlight');
+                    });
 
-                            const animalType = draggedLabel.dataset.animal;
-                            handleDrop(this, animalType);
-                            draggedLabel = null;
-                        }
+                    image.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        this.classList.remove('highlight');
+
+                        const animalType = e.dataTransfer.getData('text/plain');
+                        handleDrop(this, animalType);
                     });
                 });
+            }
+        }
+
+        function checkAnimalMatching() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            let allCorrect = true;
+
+            if (isMobile) {
+                const selects = document.querySelectorAll('.mobile-select');
+                selects.forEach(select => {
+                    const correctAnimal = select.dataset.target;
+                    const userAnswer = select.value;
+
+                    if (userAnswer === correctAnimal) {
+                        select.classList.add('correct');
+                        select.classList.remove('incorrect');
+                    } else {
+                        select.classList.add('incorrect');
+                        select.classList.remove('correct');
+                        allCorrect = false;
+                    }
+                });
+            } else {
+                const animalImages = document.querySelectorAll('.animal-image');
+                animalImages.forEach(image => {
+                    const correctAnimal = image.dataset.animal;
+                    const userAnswer = image.dataset.userAnswer;
+
+                    if (userAnswer === correctAnimal) {
+                        image.classList.add('correct');
+                    } else {
+                        image.classList.add('incorrect');
+                        allCorrect = false;
+                    }
+                });
+            }
+
+            if (allCorrect) {
+                setTimeout(() => {
+                    showQuestion(1);
+                }, 2000);
+            } else {
+                setTimeout(() => {
+                    showQuestion(3);
+                }, 2000);
             }
         }
 
