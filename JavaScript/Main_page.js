@@ -72,9 +72,17 @@ document.addEventListener('DOMContentLoaded', function () {
             if (container) container.innerHTML = `<p class="error">Ошибка: ${error.message}</p>`;
         });
 
+    const savedTheme = localStorage.getItem('theme');
+    const DarkTheme = savedTheme === 'dark';
+
+    if (DarkTheme) {
+        document.body.classList.add('dark-theme');
+    }
+
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
-        themeToggle.checked = isDarkTheme;
+        themeToggle.checked = DarkTheme;
+
         themeToggle.addEventListener('change', () => {
             const isDarkNow = themeToggle.checked;
             document.body.classList.toggle('dark-theme', isDarkNow);
@@ -82,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
         });
     }
-
     function showForm(formId) {
         document.getElementById("registration").style.display = "none";
         document.getElementById("enter").style.display = "none";
@@ -128,140 +135,140 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function resetTest() {
-    const animalImages = document.querySelectorAll('.animal-image');
-    const animalLabels = document.querySelectorAll('.animal-label');
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const animalImages = document.querySelectorAll('.animal-image');
+            const animalLabels = document.querySelectorAll('.animal-label');
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    if (isMobile) {
-        
-        document.querySelectorAll('.mobile-select').forEach(select => select.remove());
-        
-        
-        animalImages.forEach(image => {
-            image.innerHTML = '';
-            const img = document.createElement('img');
-            img.src = image.dataset.src || '';
-            img.alt = image.dataset.animal;
-            image.appendChild(img);
-            
-            setupDragAndDrop();
-        });
-    } else {
-        
-        animalImages.forEach(image => {
-            image.innerHTML = '';
-            image.classList.remove('correct', 'incorrect', 'highlight');
-            delete image.dataset.userAnswer;
-        });
+            if (isMobile) {
 
-        animalLabels.forEach(label => {
-            label.classList.remove('placed', 'dragging');
-            document.querySelector('.animal-labels').appendChild(label);
-        });
-    }
-    
-    mainTestForm.reset();
-    showQuestion(0);
-}
+                document.querySelectorAll('.mobile-select').forEach(select => select.remove());
 
-function setupDragAndDrop() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-        const animalImages = document.querySelectorAll('.animal-image');
-        
-        
-        document.querySelectorAll('.mobile-select').forEach(select => select.remove());
-        
-        animalImages.forEach(image => {
-            const animalType = image.dataset.animal;
-            const imgSrc = image.querySelector('img')?.src || '';
-            
-            
-            image.dataset.src = imgSrc;
-            
-            
-            const container = document.createElement('div');
-            container.className = 'mobile-image-container';
-            
-            const select = document.createElement('select');
-            select.className = 'mobile-select';
-            select.dataset.target = animalType;
-            
-            
-            const defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.textContent = 'Выберите';
-            select.appendChild(defaultOption);
-            
-            
-            const animals = ['cat', 'dog', 'horse', 'fish', 'snake'];
-            animals.forEach(animal => {
-                const option = document.createElement('option');
-                option.value = animal;
-                option.textContent = getAnimalName(animal);
-                select.appendChild(option);
-            });
-            
-            container.appendChild(select);
-            image.innerHTML = '';
-            image.appendChild(container);
-            
-         
-            select.addEventListener('change', function() {
-                image.dataset.userAnswer = this.value;
-            });
-        });
-        
-        
-        const labelsContainer = document.querySelector('.animal-labels');
-        if (labelsContainer) {
-            labelsContainer.style.display = 'none';
+
+                animalImages.forEach(image => {
+                    image.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = image.dataset.src || '';
+                    img.alt = image.dataset.animal;
+                    image.appendChild(img);
+
+                    setupDragAndDrop();
+                });
+            } else {
+
+                animalImages.forEach(image => {
+                    image.innerHTML = '';
+                    image.classList.remove('correct', 'incorrect', 'highlight');
+                    delete image.dataset.userAnswer;
+                });
+
+                animalLabels.forEach(label => {
+                    label.classList.remove('placed', 'dragging');
+                    document.querySelector('.animal-labels').appendChild(label);
+                });
+            }
+
+            mainTestForm.reset();
+            showQuestion(0);
         }
-    } else {
-       
-        const labelsContainer = document.querySelector('.animal-labels');
-        if (labelsContainer) {
-            labelsContainer.style.display = 'flex';
+
+        function setupDragAndDrop() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                const animalImages = document.querySelectorAll('.animal-image');
+
+
+                document.querySelectorAll('.mobile-select').forEach(select => select.remove());
+
+                animalImages.forEach(image => {
+                    const animalType = image.dataset.animal;
+                    const imgSrc = image.querySelector('img')?.src || '';
+
+
+                    image.dataset.src = imgSrc;
+
+
+                    const container = document.createElement('div');
+                    container.className = 'mobile-image-container';
+
+                    const select = document.createElement('select');
+                    select.className = 'mobile-select';
+                    select.dataset.target = animalType;
+
+
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = 'Выберите';
+                    select.appendChild(defaultOption);
+
+
+                    const animals = ['cat', 'dog', 'horse', 'fish', 'snake'];
+                    animals.forEach(animal => {
+                        const option = document.createElement('option');
+                        option.value = animal;
+                        option.textContent = getAnimalName(animal);
+                        select.appendChild(option);
+                    });
+
+                    container.appendChild(select);
+                    image.innerHTML = '';
+                    image.appendChild(container);
+
+
+                    select.addEventListener('change', function () {
+                        image.dataset.userAnswer = this.value;
+                    });
+                });
+
+
+                const labelsContainer = document.querySelector('.animal-labels');
+                if (labelsContainer) {
+                    labelsContainer.style.display = 'none';
+                }
+            } else {
+
+                const labelsContainer = document.querySelector('.animal-labels');
+                if (labelsContainer) {
+                    labelsContainer.style.display = 'flex';
+                }
+
+
+                const animalImages = document.querySelectorAll('.animal-image');
+                const animalLabels = document.querySelectorAll('.animal-label');
+
+                animalLabels.forEach(label => {
+                    label.setAttribute('draggable', 'true');
+
+                    label.addEventListener('dragstart', function (e) {
+                        e.dataTransfer.setData('text/plain', this.dataset.animal);
+                        this.classList.add('dragging');
+                    });
+
+                    label.addEventListener('dragend', function () {
+                        this.classList.remove('dragging');
+                    });
+                });
+
+                animalImages.forEach(image => {
+                    image.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                        this.classList.add('highlight');
+                    });
+
+                    image.addEventListener('dragleave', function () {
+                        this.classList.remove('highlight');
+                    });
+
+                    image.addEventListener('drop', function (e) {
+                        e.preventDefault();
+                        this.classList.remove('highlight');
+
+                        const animalType = e.dataTransfer.getData('text/plain');
+                        handleDrop(this, animalType);
+                    });
+                });
+            }
         }
-        
-       
-        const animalImages = document.querySelectorAll('.animal-image');
-        const animalLabels = document.querySelectorAll('.animal-label');
-
-        animalLabels.forEach(label => {
-            label.setAttribute('draggable', 'true');
-
-            label.addEventListener('dragstart', function(e) {
-                e.dataTransfer.setData('text/plain', this.dataset.animal);
-                this.classList.add('dragging');
-            });
-
-            label.addEventListener('dragend', function() {
-                this.classList.remove('dragging');
-            });
-        });
-
-        animalImages.forEach(image => {
-            image.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                this.classList.add('highlight');
-            });
-
-            image.addEventListener('dragleave', function() {
-                this.classList.remove('highlight');
-            });
-
-            image.addEventListener('drop', function(e) {
-                e.preventDefault();
-                this.classList.remove('highlight');
-
-                const animalType = e.dataTransfer.getData('text/plain');
-                handleDrop(this, animalType);
-            });
-        });
-    }
-}
 
         function checkAnimalMatching() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
