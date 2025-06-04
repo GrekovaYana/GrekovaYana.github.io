@@ -127,87 +127,141 @@ document.addEventListener('DOMContentLoaded', function () {
             currentQuestion = index;
         }
 
-        function setupDragAndDrop() {
+        function resetTest() {
+    const animalImages = document.querySelectorAll('.animal-image');
+    const animalLabels = document.querySelectorAll('.animal-label');
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        
+        document.querySelectorAll('.mobile-select').forEach(select => select.remove());
+        
+        
+        animalImages.forEach(image => {
+            image.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = image.dataset.src || '';
+            img.alt = image.dataset.animal;
+            image.appendChild(img);
             
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            setupDragAndDrop();
+        });
+    } else {
+        
+        animalImages.forEach(image => {
+            image.innerHTML = '';
+            image.classList.remove('correct', 'incorrect', 'highlight');
+            delete image.dataset.userAnswer;
+        });
 
-            if (isMobile) {
-                
-                const animalImages = document.querySelectorAll('.animal-image');
-                animalImages.forEach(image => {
-                    const animalType = image.dataset.animal;
-                    const select = document.createElement('select');
-                    select.className = 'mobile-select';
-                    select.dataset.target = animalType;
+        animalLabels.forEach(label => {
+            label.classList.remove('placed', 'dragging');
+            document.querySelector('.animal-labels').appendChild(label);
+        });
+    }
+    
+    mainTestForm.reset();
+    showQuestion(0);
+}
 
-                    
-                    const defaultOption = document.createElement('option');
-                    defaultOption.value = '';
-                    defaultOption.textContent = 'Выберите';
-                    select.appendChild(defaultOption);
-
-                    
-                    const animals = ['cat', 'dog', 'horse', 'fish', 'snake'];
-                    animals.forEach(animal => {
-                        const option = document.createElement('option');
-                        option.value = animal;
-                        option.textContent = getAnimalName(animal);
-                        select.appendChild(option);
-                    });
-
-                    
-                    image.innerHTML = '';
-                    image.appendChild(select);
-
-                   
-                    select.addEventListener('change', function () {
-                        image.dataset.userAnswer = this.value;
-                    });
-                });
-
-               
-                const labelsContainer = document.querySelector('.animal-labels');
-                if (labelsContainer) {
-                    labelsContainer.remove();
-                }
-            } else {
-               
-                const animalImages = document.querySelectorAll('.animal-image');
-                const animalLabels = document.querySelectorAll('.animal-label');
-
-                animalLabels.forEach(label => {
-                    label.setAttribute('draggable', 'true');
-
-                    label.addEventListener('dragstart', function (e) {
-                        e.dataTransfer.setData('text/plain', this.dataset.animal);
-                        this.classList.add('dragging');
-                    });
-
-                    label.addEventListener('dragend', function () {
-                        this.classList.remove('dragging');
-                    });
-                });
-
-                animalImages.forEach(image => {
-                    image.addEventListener('dragover', function (e) {
-                        e.preventDefault();
-                        this.classList.add('highlight');
-                    });
-
-                    image.addEventListener('dragleave', function () {
-                        this.classList.remove('highlight');
-                    });
-
-                    image.addEventListener('drop', function (e) {
-                        e.preventDefault();
-                        this.classList.remove('highlight');
-
-                        const animalType = e.dataTransfer.getData('text/plain');
-                        handleDrop(this, animalType);
-                    });
-                });
-            }
+function setupDragAndDrop() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        const animalImages = document.querySelectorAll('.animal-image');
+        
+        
+        document.querySelectorAll('.mobile-select').forEach(select => select.remove());
+        
+        animalImages.forEach(image => {
+            const animalType = image.dataset.animal;
+            const imgSrc = image.querySelector('img')?.src || '';
+            
+            
+            image.dataset.src = imgSrc;
+            
+            
+            const container = document.createElement('div');
+            container.className = 'mobile-image-container';
+            
+            const select = document.createElement('select');
+            select.className = 'mobile-select';
+            select.dataset.target = animalType;
+            
+            
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = 'Выберите';
+            select.appendChild(defaultOption);
+            
+            
+            const animals = ['cat', 'dog', 'horse', 'fish', 'snake'];
+            animals.forEach(animal => {
+                const option = document.createElement('option');
+                option.value = animal;
+                option.textContent = getAnimalName(animal);
+                select.appendChild(option);
+            });
+            
+            container.appendChild(select);
+            image.innerHTML = '';
+            image.appendChild(container);
+            
+         
+            select.addEventListener('change', function() {
+                image.dataset.userAnswer = this.value;
+            });
+        });
+        
+        
+        const labelsContainer = document.querySelector('.animal-labels');
+        if (labelsContainer) {
+            labelsContainer.style.display = 'none';
         }
+    } else {
+       
+        const labelsContainer = document.querySelector('.animal-labels');
+        if (labelsContainer) {
+            labelsContainer.style.display = 'flex';
+        }
+        
+       
+        const animalImages = document.querySelectorAll('.animal-image');
+        const animalLabels = document.querySelectorAll('.animal-label');
+
+        animalLabels.forEach(label => {
+            label.setAttribute('draggable', 'true');
+
+            label.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('text/plain', this.dataset.animal);
+                this.classList.add('dragging');
+            });
+
+            label.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+            });
+        });
+
+        animalImages.forEach(image => {
+            image.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('highlight');
+            });
+
+            image.addEventListener('dragleave', function() {
+                this.classList.remove('highlight');
+            });
+
+            image.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('highlight');
+
+                const animalType = e.dataTransfer.getData('text/plain');
+                handleDrop(this, animalType);
+            });
+        });
+    }
+}
 
         function checkAnimalMatching() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

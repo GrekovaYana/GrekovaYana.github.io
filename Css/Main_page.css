@@ -2970,7 +2970,7 @@ body.dark-theme .page-title:after {
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    margin-top: 130px;
+    margin-top: 120px;
 }
 
 .mobile-select.correct {
@@ -2988,3 +2988,4 @@ body.dark-theme .page-title:after {
         display: none;
     }
 }
+
