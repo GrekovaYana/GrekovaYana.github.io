@@ -1,4 +1,3 @@
-/* Общие стили */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,8 @@
     font-family: "Comic Sans Ms";
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -23,7 +23,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* Шапка */
 header {
     position: fixed;
     top: 0;
@@ -50,7 +49,6 @@ header {
     font-weight: bold;
 }
 
-/* Бургер-меню */
 .burger-menu {
     width: 30px;
     height: 20px;
@@ -68,7 +66,6 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Меню */
 .menu {
     position: fixed;
     top: 0;
@@ -85,7 +82,9 @@ header {
     right: 0;
 }
 
-.menu-btn, .sidebar-link, .footer-link {
+.menu-btn,
+.sidebar-link,
+.footer-link {
     display: block;
     padding: 10px;
     margin-bottom: 10px;
@@ -104,7 +103,6 @@ header {
     background-color: #e0e0e0;
 }
 
-/* Основной контент */
 .main-content {
     display: flex;
     flex: 1;
@@ -134,7 +132,8 @@ header {
     width: 100%;
 }
 
-h1, .page-title {
+h1,
+.page-title {
     margin-bottom: 20px;
     color: #333;
 }
@@ -145,7 +144,8 @@ h1, .page-title {
     position: relative;
 }
 
-.page-title:after, .expense-calculator h2:after {
+.page-title:after,
+.expense-calculator h2:after {
     content: "";
     display: block;
     width: 100px;
@@ -159,7 +159,6 @@ p {
     margin-bottom: 15px;
 }
 
-/* Подвал */
 footer {
     flex-shrink: 0;
     background-color: #333;
@@ -214,7 +213,6 @@ footer {
     transition: transform 0.3s;
 }
 
-/* Стили для животных и пород */
 .animal-description {
     display: flex;
     gap: 30px;
@@ -363,8 +361,9 @@ footer {
     font-weight: bold;
 }
 
-/* Стили для кнопок */
-button, .submit-form-btn, .view-more-btn {
+button,
+.submit-form-btn,
+.view-more-btn {
     font-family: "Comic Sans Ms", sans-serif;
     border: none;
     border-radius: 8px;
@@ -388,7 +387,8 @@ button, .submit-form-btn, .view-more-btn {
     color: #333;
 }
 
-#enterButton:hover, #registrationButton:hover {
+#enterButton:hover,
+#registrationButton:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
@@ -446,14 +446,15 @@ button, .submit-form-btn, .view-more-btn {
     background-color: #EAFFA4;
 }
 
-/* Анимации */
 @keyframes pulse {
     0% {
         opacity: 0.6;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.6;
     }
@@ -464,10 +465,12 @@ button, .submit-form-btn, .view-more-btn {
         transform: scale(0, 0);
         opacity: 1;
     }
+
     20% {
         transform: scale(25, 25);
         opacity: 1;
     }
+
     100% {
         opacity: 0;
         transform: scale(40, 40);
@@ -475,7 +478,9 @@ button, .submit-form-btn, .view-more-btn {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .loading {
@@ -496,7 +501,8 @@ button, .submit-form-btn, .view-more-btn {
     height: 100px;
 }
 
-.animal-main-image.loading, .breed-card.loading img {
+.animal-main-image.loading,
+.breed-card.loading img {
     background: #f0f0f0;
 }
 
@@ -557,7 +563,6 @@ button:focus:not(:active)::after {
     animation: spin 0.8s linear infinite;
 }
 
-/* Стили для калькулятора расходов */
 .expense-calculator {
     margin: 50px auto;
     max-width: 900px;
@@ -580,7 +585,8 @@ button:focus:not(:active)::after {
     gap: 30px;
 }
 
-.calculator-form, .calculator-results {
+.calculator-form,
+.calculator-results {
     flex: 1;
     min-width: 300px;
     padding: 20px;
@@ -659,7 +665,6 @@ button:focus:not(:active)::after {
     font-weight: bold;
 }
 
-/* Стили для модального окна галереи */
 .modal {
     display: none;
     position: fixed;
@@ -709,7 +714,8 @@ button:focus:not(:active)::after {
     color: #BBEBF9;
 }
 
-.prev, .next {
+.prev,
+.next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -731,18 +737,21 @@ button:focus:not(:active)::after {
     left: 0;
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
     background-color: rgba(187, 235, 249, 0.8);
     text-decoration: none;
 }
 
-/* Медиа-запросы */
 @media (max-width: 768px) {
-    .animal-description, .modal-content {
+
+    .animal-description,
+    .modal-content {
         flex-direction: column;
     }
 
-    .animal-main-image, .breed-card {
+    .animal-main-image,
+    .breed-card {
         width: 100%;
         min-width: 100%;
     }
@@ -759,7 +768,8 @@ button:focus:not(:active)::after {
         margin-right: 0;
     }
 
-    .calculator-form, .calculator-results {
+    .calculator-form,
+    .calculator-results {
         min-width: 100%;
     }
 
@@ -784,7 +794,6 @@ button:focus:not(:active)::after {
     }
 }
 
-/* Owl Carousel стили (оставлены без изменений) */
 .owl-carousel {
     height: 50%;
     position: relative;
@@ -859,7 +868,8 @@ button:focus:not(:active)::after {
     pointer-events: none;
 }
 
-.owl-prev, .owl-next {
+.owl-prev,
+.owl-next {
     position: relative;
     width: 50px;
     height: 50px;
@@ -877,7 +887,8 @@ button:focus:not(:active)::after {
     transform: translateY(-50%);
 }
 
-.owl-prev:hover, .owl-next:hover {
+.owl-prev:hover,
+.owl-next:hover {
     background-color: #EAFFA4 !important;
     transform: translateY(-50%) scale(1.1);
 }
@@ -960,6 +971,7 @@ button:focus:not(:active)::after {
 .owl-item.center .slide-caption {
     transform: translateY(0);
 }
+
 .owl-carousel {
     height: 500px;
     position: relative;
@@ -979,7 +991,7 @@ button:focus:not(:active)::after {
     border-radius: 15px 15px 0 0;
     width: 100%;
     box-sizing: border-box;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 
 .slide-title {
@@ -1028,7 +1040,7 @@ button:focus:not(:active)::after {
     font-size: 1.4em;
     width: calc(100% + 20px);
     margin-left: -10px;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 
 .owl-item.center .slide-title {
@@ -1044,18 +1056,21 @@ button:focus:not(:active)::after {
     transform: translateY(0);
     transition: transform 0.3s ease;
 }
+
 @keyframes pulse {
     0% {
         opacity: 0.6;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.6;
     }
 }
-/* Основные стили для страницы "О нас" */
+
 .about-section {
     display: flex;
     flex-wrap: wrap;
@@ -1068,7 +1083,7 @@ button:focus:not(:active)::after {
     flex: 1;
     min-width: 300px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     max-height: 400px;
     object-fit: cover;
 }
@@ -1088,10 +1103,9 @@ button:focus:not(:active)::after {
     line-height: 1.7;
     margin-bottom: 20px;
     font-size: 1.1em;
-    color: #34495e;
+    color: #62adc3;
 }
 
-/* Стили для команды */
 .team-section {
     margin: 60px 0;
 }
@@ -1126,7 +1140,7 @@ button:focus:not(:active)::after {
     border-radius: 15px;
     padding: 25px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     flex: 1;
     min-width: 250px;
@@ -1157,7 +1171,6 @@ button:focus:not(:active)::after {
     font-style: italic;
 }
 
-/* Стили для социальных иконок в футере */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -1173,12 +1186,12 @@ button:focus:not(:active)::after {
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    
+
 }
 
 .social-icons a:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .social-icons img {
@@ -1189,7 +1202,6 @@ button:focus:not(:active)::after {
 
 .values-section {
     margin: 60px 0;
-    background: #f9f9f9;
     padding: 40px;
     border-radius: 15px;
 }
@@ -1210,7 +1222,7 @@ button:focus:not(:active)::after {
     background: white;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .value-card i {
@@ -1229,19 +1241,20 @@ button:focus:not(:active)::after {
     .about-section {
         flex-direction: column;
     }
-    
+
     .about-image {
         width: 100%;
     }
-    
+
     .member-card {
         min-width: 100%;
     }
-    
+
     .values-grid {
         grid-template-columns: 1fr;
     }
 }
+
 .contact-cards {
     display: flex;
     flex-wrap: wrap;
@@ -1257,14 +1270,14 @@ button:focus:not(:active)::after {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     text-align: center;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .contact-card h2 {
@@ -1275,13 +1288,11 @@ button:focus:not(:active)::after {
 
 .contact-card p {
     font-size: 1.1em;
-    color: #34495e;
     line-height: 1.6;
     margin-bottom: 10px;
 }
 
 .social-box {
-    background: #f9f9f9;
     padding: 40px;
     border-radius: 15px;
     margin: 50px 0;
@@ -1310,12 +1321,12 @@ button:focus:not(:active)::after {
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .social-icons a:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .social-icons img {
@@ -1323,11 +1334,12 @@ button:focus:not(:active)::after {
     height: 40px;
     object-fit: contain;
 }
+
 .map-container {
     margin: 50px 0;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     height: 500px;
     background-color: #EAFFA4;
     text-align: center;
@@ -1338,9 +1350,9 @@ button:focus:not(:active)::after {
     height: 100%;
     border: none;
 }
+
 .contact-info {
     margin: 60px 0;
-    background: #f9f9f9;
     padding: 50px;
     border-radius: 15px;
 }
@@ -1361,7 +1373,7 @@ button:focus:not(:active)::after {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .info-item h3 {
@@ -1382,11 +1394,11 @@ button:focus:not(:active)::after {
     color: #7f8c8d;
     line-height: 1.7;
 }
+
 .contact-form {
-    background: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     margin: 60px 0;
 }
 
@@ -1445,29 +1457,32 @@ textarea.form-control {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(155, 215, 240, 0.4);
 }
+
 @media (max-width: 768px) {
     .contact-card {
         min-width: 100%;
     }
-    
+
     .social-icons a {
         width: 60px;
         height: 60px;
     }
-    
+
     .social-icons img {
         width: 30px;
         height: 30px;
     }
-    
+
     .map-container {
         height: 350px;
     }
-    
-    .contact-info, .contact-form {
+
+    .contact-info,
+    .contact-form {
         padding: 25px;
     }
 }
+
 .faq-section {
     margin: 60px 0;
 }
@@ -1483,7 +1498,7 @@ textarea.form-control {
     padding: 25px;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .faq-item h3 {
@@ -1505,6 +1520,7 @@ textarea.form-control {
     line-height: 1.7;
     padding-left: 35px;
 }
+
 .hero-section {
     position: relative;
     margin: 30px 0;
@@ -1564,7 +1580,7 @@ textarea.form-control {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .mission-card i {
@@ -1617,7 +1633,8 @@ textarea.form-control {
     margin-bottom: 20px;
 }
 
-.feature-text ul, .feature-text ol {
+.feature-text ul,
+.feature-text ol {
     padding-left: 20px;
     line-height: 1.8;
     margin: 20px 0;
@@ -1631,7 +1648,7 @@ textarea.form-control {
     flex: 1;
     min-width: 300px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     max-height: 400px;
     object-fit: cover;
 }
@@ -1666,7 +1683,7 @@ textarea.form-control {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .stat-number {
@@ -1703,7 +1720,7 @@ textarea.form-control {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .team-member img {
@@ -1762,32 +1779,35 @@ textarea.form-control {
 
 .cta-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
 @media (max-width: 768px) {
     .hero-text {
         position: static;
         background: #BBEBF9;
     }
-    
-    .feature-block, .feature-block.reverse {
+
+    .feature-block,
+    .feature-block.reverse {
         flex-direction: column;
     }
-    
+
     .stats-grid {
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .cta-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .cta-btn {
         width: 100%;
         max-width: 300px;
     }
 }
+
 #test-container {
     max-width: 800px;
     margin: 0 auto;
@@ -1892,6 +1912,7 @@ textarea.form-control {
     gap: 10px;
     margin: 20px 0;
 }
+
 .animal-image {
     width: 180px;
     height: 180px;
@@ -1969,4 +1990,934 @@ textarea.form-control {
 .animal-label.placed {
     background-color: #BBEBF9;
     cursor: default;
+}
+
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.theme-icon {
+    font-size: 18px;
+    color: #333;
+    margin: 0 5px;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-theme .content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-theme .sidebar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme header {
+    background-color: #1a1a1a;
+}
+
+body.dark-theme .menu-btn,
+body.dark-theme .sidebar-link {
+    color: #ffffff;
+}
+
+body.dark-theme .menu-btn:hover {
+    background-color: #333;
+}
+
+body.dark-theme .sidebar-link:hover {
+    background-color: #333;
+}
+
+body.dark-theme {
+    color: #ffffff;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: #ffffff;
+}
+
+body.dark-theme .page-title,
+body.dark-theme .expense-calculator h2 {
+    color: #ffffff;
+}
+
+body.dark-theme .page-title:after,
+body.dark-theme .expense-calculator h2:after {
+    background: #555;
+}
+
+body.dark-theme .result-label,
+body.dark-theme .result-value,
+body.dark-theme .form-group label,
+body.dark-theme .calculator-results h3 {
+    color: #ffffff;
+}
+
+body.dark-theme .form-control {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+body.dark-theme .form-control:focus {
+    border-color: #BBEBF9;
+}
+
+body.dark-theme .expense-calculator {
+    background-color: #2d2d2d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .calculator-form,
+body.dark-theme .calculator-results {
+    background: #333;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .result-item.total {
+    border-top-color: #555;
+}
+
+body.dark-theme .menu {
+    background-color: #1a1a1a;
+}
+
+body.dark-theme .sidebar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .sidebar-link {
+    color: #ffffff;
+}
+
+body.dark-theme .sidebar-link:hover {
+    background-color: #333;
+    color: #BBEBF9;
+}
+
+body.dark-theme footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-theme .footer-link {
+    color: #ffffff;
+}
+
+body.dark-theme .footer-link:hover {
+    color: #BBEBF9;
+}
+
+body.dark-theme .footer-column h3 {
+    color: #BBEBF9;
+}
+
+body.dark-theme .menu-btn {
+    background-color: #333;
+    color: #ffffff;
+}
+
+body.dark-theme .menu-btn:hover {
+    background-color: #444;
+}
+
+body.dark-theme .calculate-btn {
+    background-color: #333;
+    color: #ffffff;
+}
+
+body.dark-theme .calculate-btn:hover {
+    background-color: #444;
+}
+
+body.dark-theme .slide-title {
+    background-color: #333;
+    color: #ffffff;
+}
+
+body.dark-theme .owl-item.center .slide-title {
+    background-color: #444;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: #ffffff;
+}
+
+body.dark-theme header,
+body.dark-theme .slide-title,
+body.dark-theme .slide-caption,
+body.dark-theme .submit-form-btn,
+body.dark-theme #enterButton,
+body.dark-theme .owl-prev,
+body.dark-theme .owl-next,
+body.dark-theme .owl-dot {
+    background-color: #BBEBF9;
+    color: #ffffff;
+}
+
+
+body.dark-theme .owl-item.center .slide-title {
+    background-color: #2a4a5a !important;
+}
+
+body.dark-theme .sidebar,
+body.dark-theme #registrationButton,
+body.dark-theme .cta-section,
+body.dark-theme .map-container,
+body.dark-theme .calculate-btn:hover,
+body.dark-theme .owl-dot.active,
+body.dark-theme .animal-label {
+    background-color: #3a4a1a !important;
+    color: #ffffff;
+}
+
+body.dark-theme .content,
+body.dark-theme .calculator-form,
+body.dark-theme .calculator-results,
+body.dark-theme .expense-calculator,
+body.dark-theme .member-card,
+body.dark-theme .value-card,
+body.dark-theme .contact-card,
+body.dark-theme .info-item,
+body.dark-theme .mission-card,
+body.dark-theme .stat-item,
+body.dark-theme .team-member,
+body.dark-theme .faq-item,
+body.dark-theme .form-control,
+body.dark-theme .menu-btn {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+
+body.dark-theme .result-item.total {
+    border-top-color: #555;
+}
+
+body.dark-theme .page-title:after,
+body.dark-theme .expense-calculator h2:after {
+    background: #555;
+}
+
+
+body.dark-theme .menu-btn:hover,
+body.dark-theme .sidebar-link:hover,
+body.dark-theme .calculate-btn:hover,
+body.dark-theme .submit-form-btn:hover,
+body.dark-theme .cta-btn:hover {
+    background-color: #444 !important;
+}
+
+body.dark-theme .expense-calculator,
+body.dark-theme .member-card,
+body.dark-theme .value-card,
+body.dark-theme .contact-card,
+body.dark-theme .info-item,
+body.dark-theme .mission-card,
+body.dark-theme .stat-item,
+body.dark-theme .team-member,
+body.dark-theme .faq-item {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .form-control {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+body.dark-theme .form-control:focus {
+    border-color: #1a3a4a;
+}
+
+body.dark-theme .social-icons a {
+    background-color: #444;
+}
+
+body.dark-theme footer {
+    background-color: #1a1a1a;
+}
+
+body.dark-theme .footer-link {
+    color: #e0e0e0;
+}
+
+body.dark-theme .footer-link:hover {
+    color: #BBEBF9;
+}
+
+body.dark-theme .footer-column h3 {
+    color: #BBEBF9;
+}
+
+body.dark-theme .breed-card,
+body.dark-theme .animal-description,
+body.dark-theme .breeds-container,
+body.dark-theme #breeds-container,
+body.dark-theme .breed-info,
+body.dark-theme .animal-text,
+body.dark-theme .feature-list,
+body.dark-theme .care-list,
+body.dark-theme .breed-features {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0;
+}
+
+body.dark-theme .breed-name,
+body.dark-theme .breed-description,
+body.dark-theme .feature-list li,
+body.dark-theme .care-list li {
+    color: #e0e0e0;
+}
+
+body.dark-theme .breed-lifespan {
+    background: #1a3a4a;
+    color: #ffffff;
+}
+
+body.dark-theme .animal-link {
+    color: #e0e0e0;
+}
+
+body.dark-theme .animal-link img {
+    border-color: #1a3a4a;
+}
+
+body.dark-theme .related-animals {
+    border-top-color: #444;
+}
+
+body.dark-theme .modal-content {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .image-info {
+    color: #ffffff;
+}
+
+body.dark-theme .close,
+body.dark-theme .prev,
+body.dark-theme .next {
+    color: #ffffff;
+}
+
+body.dark-theme .close:hover,
+body.dark-theme .prev:hover,
+body.dark-theme .next:hover {
+    color: #BBEBF9;
+}
+
+.dark-theme-card {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-theme-card .breed-name,
+.dark-theme-card .breed-description {
+    color: #e0e0e0 !important;
+}
+
+.breed-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-bottom: 30px;
+}
+
+.breed-card:hover {
+    transform: translateY(-10px);
+}
+
+.breed-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.breed-info {
+    padding: 20px;
+}
+
+.breed-info h2 {
+    color: #2d2d2d;
+    margin-bottom: 10px;
+}
+
+.breed-info p {
+    color: #2d2d2d;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.breed-features {
+    margin: 15px 0;
+}
+
+.breed-features ul {
+    list-style-type: none;
+}
+
+.breed-features li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 25px;
+    color: #2d2d2d;
+}
+
+.breed-features li:before {
+    content: "🐾";
+    position: absolute;
+    left: 0;
+}
+
+.breed-lifespan {
+    font-weight: bold;
+    color: #BBEBF9;
+    background: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+
+.dark-theme-card {
+    background-color: #2d2d2d !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-text {
+    color: #e0e0e0 !important;
+}
+
+.dark-theme-card .breed-features li:before {
+    color: #e0e0e0;
+}
+
+.dark-lifespan {
+    background: #1a3a4a !important;
+    color: #ffffff !important;
+}
+
+.error {
+    color: #ff3333;
+    text-align: center;
+    padding: 20px;
+}
+
+body.dark-theme #test-container,
+body.dark-theme .question,
+body.dark-theme .image-matching-container,
+body.dark-theme .animal-labels,
+body.dark-theme #main-test-form,
+body.dark-theme .form-group,
+body.dark-theme #test-result,
+body.dark-theme #fail-message {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0;
+}
+
+body.dark-theme .animal-image {
+    border-color: #444;
+}
+
+body.dark-theme .animal-label {
+    background-color: #3a4a1a;
+    color: #ffffff;
+}
+
+body.dark-theme .animal-label:hover {
+    background-color: #4a5a2a;
+}
+
+body.dark-theme .form-control {
+    background-color: #333;
+    color: #ffffff;
+    border-color: #555;
+}
+
+body.dark-theme .form-control:focus {
+    border-color: #1a3a4a;
+}
+
+body.dark-theme select.form-control {
+    background-color: #333;
+    color: #ffffff;
+}
+
+body.dark-theme .submit-form-btn {
+    background-color: #1a3a4a;
+    color: #ffffff;
+}
+
+body.dark-theme .submit-form-btn:hover {
+    background-color: #2a4a5a;
+}
+
+body.dark-theme .result-message {
+    color: #e0e0e0;
+}
+
+
+body.dark-theme select option {
+    background-color: #333;
+    color: #ffffff;
+}
+
+
+body.dark-theme .page-title {
+    color: #ffffff;
+}
+
+body.dark-theme .page-title:after {
+    background-color: #555;
+}
+
+.dark-theme-test {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-theme-test h2,
+.dark-theme-test h3,
+.dark-theme-test p,
+.dark-theme-test label {
+    color: #e0e0e0 !important;
+}
+
+.dark-label {
+    background-color: #3a4a1a !important;
+    color: #ffffff !important;
+}
+
+.dark-label:hover {
+    background-color: #4a5a2a !important;
+}
+
+.dark-select {
+    background-color: #333 !important;
+    color: #ffffff !important;
+    border-color: #555 !important;
+}
+
+.dark-result {
+    background-color: #333 !important;
+    border-color: #444 !important;
+}
+
+.dark-theme-test .animal-image {
+    border-color: #555 !important;
+}
+
+.dark-theme-test .animal-image.highlight {
+    border-color: #4a5a2a !important;
+}
+
+.dark-theme-test .animal-image.correct {
+    border-color: #4CAF50 !important;
+}
+
+.dark-theme-test .animal-image.incorrect {
+    border-color: #F44336 !important;
+}
+
+.dark-theme-test .submit-form-btn {
+    background-color: #1a3a4a !important;
+    color: #ffffff !important;
+}
+
+.dark-theme-test .submit-form-btn:hover {
+    background-color: #2a4a5a !important;
+}
+
+.dark-theme-test .best-match-tag {
+    color: #BBEBF9 !important;
+}
+
+.dark-theme-test .match-percentage {
+    color: #BBEBF9 !important;
+}
+
+.dark-theme-card {
+    background-color: #333;
+    border-color: #444;
+}
+
+.light-text-in-dark {
+    color: #fff;
+}
+
+.dark-theme-card {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+.dark-theme-text,
+.dark-theme-text h2,
+.dark-theme-text p,
+.dark-theme-text li,
+.dark-theme-text .breed-lifespan {
+    color: #ffffff !important;
+}
+
+.dark-theme-card {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+
+.dark-theme-text,
+.dark-theme-text h2,
+.dark-theme-text p,
+.dark-theme-text li,
+.dark-theme-text .breed-lifespan {
+    color: #fff !important;
+}
+
+.breed-image {
+    filter: none !important;
+}
+
+.dark-theme-card {
+    background-color: #333 !important;
+    border-color: #555 !important;
+}
+
+.dark-theme-text,
+.dark-theme-text h2,
+.dark-theme-text .breed-description,
+.dark-theme-text li,
+.dark-theme-text .breed-lifespan {
+    color: #fff !important;
+}
+/* Общие стили для мобильных устройств (до 768px) */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    header {
+        padding: 10px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        margin-left: 10px;
+        width: 100px;
+        height: 40px;
+    }
+
+    .burger-menu {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 1002;
+    }
+
+    .menu {
+        padding-top: 60px;
+    }
+    /* Навигация */
+    .menu {
+        width: 80%;
+        right: -80%;
+    }
+
+    .menu.active {
+        right: 0;
+    }
+
+    /* Слайдер в шапке */
+    .owl-carousel {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        margin: 0;
+        height: 180px;
+    }
+
+    .slide {
+        height: 180px;
+        border-radius: 0;
+    }
+
+    .slide-title {
+        border-radius: 0;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    /* Карточки животных */
+    .animal-description {
+        flex-direction: column;
+    }
+
+    .animal-main-image {
+        width: 100%;
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .breeds-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Карусель */
+    .owl-nav {
+        display: none;
+    }
+
+    /* Формы */
+    .form-control,
+    button {
+        width: 100%;
+    }
+
+    /* Футер */
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-column {
+        min-width: 100%;
+    }
+
+    /* Калькулятор расходов */
+    .calculator-container {
+        flex-direction: column;
+    }
+
+    .calculator-form,
+    .calculator-results {
+        min-width: 100%;
+    }
+
+    /* О нас */
+    .about-section {
+        flex-direction: column;
+    }
+
+    .about-image {
+        width: 100%;
+    }
+
+    /* Команда */
+    .team-members {
+        flex-direction: column;
+    }
+
+    .member-card {
+        min-width: 100%;
+    }
+
+    /* Контакты */
+    .contact-cards {
+        flex-direction: column;
+    }
+
+    .contact-card {
+        min-width: 100%;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+
+    /* Тест */
+    .image-matching-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .animal-image-container {
+        margin: 10px 0;
+    }
+}
+
+/* Дополнительные оптимизации для очень маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+    header {
+        height: 80px;
+    }
+    .slide-container{
+        height: 300px;
+    }
+    .logo {
+        width: 40px;
+        height: 30px;
+        margin-left: 120px;
+    }
+
+    .burger-menu {
+        top: 5px;
+        right: 25px;
+    }
+
+    .owl-carousel {
+        top: 50px;
+        height: 150px;
+    }
+
+    .slide {
+        height: 150px;
+    }
+
+    .content {
+        margin-top: 20px;
+    }
+
+    .page-title {
+        font-size: 1.5em;
+        margin: 15px 0;
+    }
+
+    .animal-main-image,
+    .about-image {
+        max-height: 250px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icons img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .map-container {
+        height: 200px;
+    }
+    .page-title{
+        margin-top: 300px;
+    }
+}
+
+/* Ландшафтная ориентация для мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+    .owl-carousel {
+        height: 120px;
+    }
+
+    .slide {
+        height: 120px;
+    }
+
+    .content {
+        margin-top: 120px;
+    }
+
+    .animal-description {
+        flex-direction: row;
+    }
+
+    .animal-main-image {
+        width: 40%;
+        min-width: 40%;
+        max-height: 200px;
+    }
+
+    .animal-text {
+        width: 60%;
+        min-width: 60%;
+    }
 }

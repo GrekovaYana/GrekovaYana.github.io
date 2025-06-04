@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Получаем элементы формы
+
     const animalTypeSelect = document.getElementById('animal-type');
     const animalSizeSelect = document.getElementById('animal-size');
     const timePeriodSelect = document.getElementById('time-period');
     const calculateBtn = document.getElementById('calculate-btn');
 
-    // Получаем элементы для вывода результатов
+
     const foodCostElement = document.getElementById('food-cost');
     const vetCostElement = document.getElementById('vet-cost');
     const accessoriesCostElement = document.getElementById('accessories-cost');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         animalSizeSelect.disabled = this.value !== 'dog';
     });
 
-    // Базовая стоимость для каждого типа животных (в месяц)
+    //Базовая стоимость для каждого типа животных (в месяц)
     const baseCosts = {
         cat: {
             food: 2000,
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Множители для разных периодов
+    //Множители для разных периодов
     const periodMultipliers = {
         month: 1,
         year: 12,

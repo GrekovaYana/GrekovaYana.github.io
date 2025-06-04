@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Friend</title>
     <link href="../Css/Main_page.css" type="text/css" rel="stylesheet" media="screen">
-    <link href="../JavaScript/Main_page.js" type="text/javascript" rel="stylesheet" media="screen">
     <script src="../JavaScript/Main_page.js"></script>
     <link rel="shortcut icon" href="../images/BirdForHeader.png">
     <script src="../JavaScript/jquery-3.7.1.min.js"></script>
@@ -14,13 +13,20 @@
     <link rel="stylesheet" href="../OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <script src="../JavaScript/OwlCarouselAnimals.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../JavaScript/PetExpenseCalculator.js"></script>
 </head>
 
 <body>
 
     <header>
         <div class="logo"><img src="../images/BirAndLogo.png" alt="Логотип компании"></div>
+        <div class="theme-switcher">
+            <span class="theme-icon"><i class="fas fa-sun"></i></span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
+        </div>
         <div class="burger-menu">
             <div class="burger-line"></div>
             <div class="burger-line"></div>
@@ -47,51 +53,50 @@
         <!--Элемент <aside> HTML представляет собой часть документа, содержимое которой лишь косвенно связано с основным содержанием документа. Вспомогательные элементы часто представлены в виде боковых панелей или выносных блоков.-->
 
         <main class="content">
-    <div>
-        <button id="enterButton" onclick="showForm('enter')">Войти</button>
-        <button id="registrationButton" onclick="showForm('registration')">Зарегистрироваться</button>
-    </div>
-
-    <div id="registration" style="display: none">
-        Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
-        Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
-        Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
-        Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
-        Ваш номер <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Ваш номер">
-        <br>
-        Дата рождения <input type="date" id="dateOfBirth"><br>
-        E-mail: <input type="email" id="email"><br>в
-        <div class="form-container">
-            <div class="form-group">
-                <label for="settlement-type">Тип населенного пункта:</label>
-                <select id="settlement-type" name="settlement-type">
-                    <option value="">Выберите тип</option>
-                    <option value="city">Город</option>
-                    <option value="village">Село</option>
-                    <option value="town">Посёлок</option>
-                    <option value="urban-village">Посёлок городского типа</option>
-                    <option value="hamlet">Деревня</option>
-                    <option value="farm">Хутор</option>
-                    <option value="other">Другое</option>
-                </select>
+            <div>
+                <button id="enterButton" onclick="showForm('enter')">Войти</button>
+                <button id="registrationButton" onclick="showForm('registration')">Зарегистрироваться</button>
             </div>
 
-            <div class="form-group">
-                <label for="settlement-name">Название населенного пункта:</label>
-                <input type="text" id="settlement-name" name="settlement-name"
-                    placeholder="Введите название">
+            <div id="registration" style="display: none">
+                Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
+                Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
+                Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
+                Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
+                Ваш номер <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Ваш номер">
+                <br>
+                Дата рождения <input type="date" id="dateOfBirth"><br>
+                E-mail: <input type="email" id="email"><br>в
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="settlement-type">Тип населенного пункта:</label>
+                        <select id="settlement-type" name="settlement-type">
+                            <option value="">Выберите тип</option>
+                            <option value="city">Город</option>
+                            <option value="village">Село</option>
+                            <option value="town">Посёлок</option>
+                            <option value="urban-village">Посёлок городского типа</option>
+                            <option value="hamlet">Деревня</option>
+                            <option value="farm">Хутор</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="settlement-name">Название населенного пункта:</label>
+                        <input type="text" id="settlement-name" name="settlement-name" placeholder="Введите название">
+                    </div>
+                </div>
+                <button type="submit" class="submit-form-btn">Зарегистрироваться</button>
             </div>
-        </div>
-         <button type="submit" class="submit-form-btn">Зарегистрироваться</button>
-    </div>
-    <div id="enter" style="display: none">
-        Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
-        Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
-        Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
-        Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
-        <button type="submit" class="submit-form-btn">Войти</button>
-    </div>
-</main>
+            <div id="enter" style="display: none">
+                Имя <input type="text" size="10" maxlength="15" required placeholder="Ваше Имя"><br>
+                Фамилия <input type="text" size="12" maxlength="18" required placeholder="Ваша Фамилия"><br>
+                Отчество <input type="text" size="12" maxlength="18" required placeholder="Ваше Отчество"><br>
+                Пароль <input type="password" size="16" required placeholder="Ваш пароль"><br>
+                <button type="submit" class="submit-form-btn">Войти</button>
+            </div>
+        </main>
 
     </div>
     <!--при обновлении страницы счетчик не сбрасывается!!!Спросить хорошо это или плохо-->
@@ -106,7 +111,7 @@
 
             <div class="footer-column">
                 <h3>Информация</h3>
-                 <a href="What_is.html" class="footer-link">Что такое Little Friend?</a>
+                <a href="What_is.html" class="footer-link">Что такое Little Friend?</a>
                 <div class="social-icons">
                     <a href="https://dzen.ru/knigajivotnih"><img src="../images/IconDzen.png" alt="Dzen"></a>
                     <a href="https://t.me/s/animals_n1"><img src="../images/IconTelegram.png" alt="Telegram"></a>

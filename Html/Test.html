@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Friend - Лошади</title>
     <link href="../Css/Main_page.css" type="text/css" rel="stylesheet" media="screen">
-    <link href="../JavaScript/Main_page.js" type="text/javascript" rel="stylesheet" media="screen">
     <script src="../JavaScript/Main_page.js"></script>
     <link rel="shortcut icon" href="../images/BirdForHeader.png">
     <script src="../JavaScript/jquery-3.7.1.min.js"></script>
@@ -14,13 +13,20 @@
     <link rel="stylesheet" href="../OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <script src="../JavaScript/OwlCarouselAnimals.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../JavaScript/PetExpenseCalculator.js"></script>
 </head>
 
 <body data-page="horses">
 
     <header>
         <div class="logo"><img src="../images/BirAndLogo.png" alt="Логотип компании"></div>
+        <div class="theme-switcher">
+            <span class="theme-icon"><i class="fas fa-sun"></i></span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
+        </div>
         <div class="burger-menu">
             <div class="burger-line"></div>
             <div class="burger-line"></div>
@@ -52,7 +58,7 @@
                     <h2>Проверка базовых знаний о животных</h2>
                     <p>Соотнесите изображения животных с их названиями:</p>
 
-                    <<div class="image-matching-container">
+                    <div class="image-matching-container">
                         <div class="image-matching-row">
                             <div class="animal-image animal-cat" data-animal="cat"></div>
                             <div class="animal-image animal-dog" data-animal="dog"></div>
@@ -70,157 +76,157 @@
                             <div class="animal-label" draggable="true" data-animal="fish">Рыбка</div>
                             <div class="animal-label" draggable="true" data-animal="snake">Змея</div>
                         </div>
+                    </div>
+
+                    <button id="check-matching-btn" class="submit-form-btn">Проверить</button>
                 </div>
+                <div id="question-2-13" class="question">
+                    <h2>Ответьте на вопросы о ваших предпочтениях и образе жизни</h2>
 
-                <button id="check-matching-btn" class="submit-form-btn">Проверить</button>
-            </div>
-            <div id="question-2-13" class="question">
-                <h2>Ответьте на вопросы о ваших предпочтениях и образе жизни</h2>
+                    <form id="main-test-form">
+                        <div class="form-group">
+                            <label>1. Сколько времени вы готовы уделять животному ежедневно?</label>
+                            <select class="form-control" name="time" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Менее 1 часа</option>
+                                <option value="2">1-2 часа</option>
+                                <option value="3">2-4 часа</option>
+                                <option value="4">Более 4 часов</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>2. Какой размер животного вас устраивает?</label>
+                            <select class="form-control" name="size" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Очень маленькое (меньше кошки)</option>
+                                <option value="2">Маленькое (как кошка)</option>
+                                <option value="3">Среднее (как собака)</option>
+                                <option value="4">Крупное (больше собаки)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>3. Какой бюджет вы готовы выделять на содержание животного в месяц?</label>
+                            <select class="form-control" name="budget" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">До 1000 руб.</option>
+                                <option value="2">1000-3000 руб.</option>
+                                <option value="3">3000-7000 руб.</option>
+                                <option value="4">Более 7000 руб.</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>4. Насколько важно для вас общение с животным?</label>
+                            <select class="form-control" name="communication" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Не важно, я не жду взаимодействия</option>
+                                <option value="2">Минимальное, иногда погладить</option>
+                                <option value="3">Умеренное, регулярное общение</option>
+                                <option value="4">Очень важно, постоянный контакт</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>5. Как часто вы путешествуете или отсутствуете дома?</label>
+                            <select class="form-control" name="travel" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Очень часто (более 2 раз в месяц)</option>
+                                <option value="2">Довольно часто (1-2 раза в месяц)</option>
+                                <option value="3">Редко (1 раз в 2-3 месяца)</option>
+                                <option value="4">Почти никогда</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>6. Есть ли у вас аллергия на животных?</label>
+                            <select class="form-control" name="allergy" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Да, сильная (нужно гипоаллергенное животное)</option>
+                                <option value="2">Есть небольшая (нужно животное без шерсти)</option>
+                                <option value="3">Не знаю, возможно</option>
+                                <option value="4">Нет аллергии</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>7. Какой у вас опыт содержания животных?</label>
+                            <select class="form-control" name="experience" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Нет опыта</option>
+                                <option value="2">Был небольшой опыт</option>
+                                <option value="3">Опыт есть, но не большой</option>
+                                <option value="4">Опытный владелец</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>8. Какой у вас тип жилья?</label>
+                            <select class="form-control" name="housing" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Общежитие/комната</option>
+                                <option value="2">Квартира без балкона</option>
+                                <option value="3">Квартира с балконом</option>
+                                <option value="4">Частный дом с участком</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>9. Насколько активный образ жизни вы ведете?</label>
+                            <select class="form-control" name="activity" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Сидячий, почти не выхожу</option>
+                                <option value="2">Умеренный, иногда гуляю</option>
+                                <option value="3">Активный, регулярные прогулки</option>
+                                <option value="4">Очень активный, спорт каждый день</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>10. Как вы относитесь к шуму в доме?</label>
+                            <select class="form-control" name="noise" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Не переношу шум</option>
+                                <option value="2">Предпочитаю тишину</option>
+                                <option value="3">Нейтрально</option>
+                                <option value="4">Люблю оживленную атмосферу</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>11. Как долго вы планируете заботиться о животном?</label>
+                            <select class="form-control" name="duration" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">1-3 года</option>
+                                <option value="2">3-5 лет</option>
+                                <option value="3">5-10 лет</option>
+                                <option value="4">10+ лет</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>12. Какова основная причина, по которой вы хотите завести животное?</label>
+                            <select class="form-control" name="reason" required>
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="1">Украшение интерьера</option>
+                                <option value="2">Снятие стресса</option>
+                                <option value="3">Компаньон для общения</option>
+                                <option value="4">Активный партнер для игр/спорта</option>
+                            </select>
+                        </div>
 
-                <form id="main-test-form">
-                    <div class="form-group">
-                        <label>1. Сколько времени вы готовы уделять животному ежедневно?</label>
-                        <select class="form-control" name="time" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Менее 1 часа</option>
-                            <option value="2">1-2 часа</option>
-                            <option value="3">2-4 часа</option>
-                            <option value="4">Более 4 часов</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>2. Какой размер животного вас устраивает?</label>
-                        <select class="form-control" name="size" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Очень маленькое (меньше кошки)</option>
-                            <option value="2">Маленькое (как кошка)</option>
-                            <option value="3">Среднее (как собака)</option>
-                            <option value="4">Крупное (больше собаки)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>3. Какой бюджет вы готовы выделять на содержание животного в месяц?</label>
-                        <select class="form-control" name="budget" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">До 1000 руб.</option>
-                            <option value="2">1000-3000 руб.</option>
-                            <option value="3">3000-7000 руб.</option>
-                            <option value="4">Более 7000 руб.</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>4. Насколько важно для вас общение с животным?</label>
-                        <select class="form-control" name="communication" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Не важно, я не жду взаимодействия</option>
-                            <option value="2">Минимальное, иногда погладить</option>
-                            <option value="3">Умеренное, регулярное общение</option>
-                            <option value="4">Очень важно, постоянный контакт</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>5. Как часто вы путешествуете или отсутствуете дома?</label>
-                        <select class="form-control" name="travel" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Очень часто (более 2 раз в месяц)</option>
-                            <option value="2">Довольно часто (1-2 раза в месяц)</option>
-                            <option value="3">Редко (1 раз в 2-3 месяца)</option>
-                            <option value="4">Почти никогда</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>6. Есть ли у вас аллергия на животных?</label>
-                        <select class="form-control" name="allergy" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Да, сильная (нужно гипоаллергенное животное)</option>
-                            <option value="2">Есть небольшая (нужно животное без шерсти)</option>
-                            <option value="3">Не знаю, возможно</option>
-                            <option value="4">Нет аллергии</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>7. Какой у вас опыт содержания животных?</label>
-                        <select class="form-control" name="experience" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Нет опыта</option>
-                            <option value="2">Был небольшой опыт</option>
-                            <option value="3">Опыт есть, но не большой</option>
-                            <option value="4">Опытный владелец</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>8. Какой у вас тип жилья?</label>
-                        <select class="form-control" name="housing" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Общежитие/комната</option>
-                            <option value="2">Квартира без балкона</option>
-                            <option value="3">Квартира с балконом</option>
-                            <option value="4">Частный дом с участком</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>9. Насколько активный образ жизни вы ведете?</label>
-                        <select class="form-control" name="activity" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Сидячий, почти не выхожу</option>
-                            <option value="2">Умеренный, иногда гуляю</option>
-                            <option value="3">Активный, регулярные прогулки</option>
-                            <option value="4">Очень активный, спорт каждый день</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>10. Как вы относитесь к шуму в доме?</label>
-                        <select class="form-control" name="noise" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Не переношу шум</option>
-                            <option value="2">Предпочитаю тишину</option>
-                            <option value="3">Нейтрально</option>
-                            <option value="4">Люблю оживленную атмосферу</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>11. Как долго вы планируете заботиться о животном?</label>
-                        <select class="form-control" name="duration" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">1-3 года</option>
-                            <option value="2">3-5 лет</option>
-                            <option value="3">5-10 лет</option>
-                            <option value="4">10+ лет</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>12. Какова основная причина, по которой вы хотите завести животное?</label>
-                        <select class="form-control" name="reason" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="1">Украшение интерьера</option>
-                            <option value="2">Снятие стресса</option>
-                            <option value="3">Компаньон для общения</option>
-                            <option value="4">Активный партнер для игр/спорта</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-form-btn">Узнать результат</button>
-                </form>
-            </div>
-            <div id="test-result" class="question">
-                <h2>Результаты теста</h2>
-                <div id="result-content"></div>
-                <button id="restart-test" class="submit-form-btn">Пройти тест еще раз</button>
-            </div>
-            <div id="fail-message" class="question">
-                <h2>Результаты теста</h2>
-                <div class="result-message">
-                    <p>К сожалению, вы еще не готовы заводить домашнее животное.</p>
-                    <p>Вы не смогли правильно определить всех животных, что говорит о недостаточном уровне знаний о
-                        них.
-                        Прежде чем заводить питомца, рекомендуем изучить информацию о разных видах животных, их
-                        потребностях и особенностях содержания.</p>
-                    <p>Когда почувствуете себя более уверенно, приходите пройти тест снова!</p>
+                        <button type="submit" class="submit-form-btn">Узнать результат</button>
+                    </form>
                 </div>
-                <button id="try-again" class="submit-form-btn">Попробовать еще раз</button>
+                <div id="test-result" class="question">
+                    <h2>Результаты теста</h2>
+                    <div id="result-content"></div>
+                    <button id="restart-test" class="submit-form-btn">Пройти тест еще раз</button>
+                </div>
+                <div id="fail-message" class="question">
+                    <h2>Результаты теста</h2>
+                    <div class="result-message">
+                        <p>К сожалению, вы еще не готовы заводить домашнее животное.</p>
+                        <p>Вы не смогли правильно определить всех животных, что говорит о недостаточном уровне знаний о
+                            них.
+                            Прежде чем заводить питомца, рекомендуем изучить информацию о разных видах животных, их
+                            потребностях и особенностях содержания.</p>
+                        <p>Когда почувствуете себя более уверенно, приходите пройти тест снова!</p>
+                    </div>
+                    <button id="try-again" class="submit-form-btn">Попробовать еще раз</button>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <footer>
@@ -243,8 +249,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="test.js"></script>
 </body>
 
 </html>

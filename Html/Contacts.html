@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Friend - Контакты</title>
     <link href="../Css/Main_page.css" type="text/css" rel="stylesheet" media="screen">
-    <link href="../JavaScript/Main_page.js" type="text/javascript" rel="stylesheet" media="screen">
     <script src="../JavaScript/Main_page.js"></script>
     <link rel="shortcut icon" href="../images/BirdForHeader.png">
     <script src="../JavaScript/jquery-3.7.1.min.js"></script>
@@ -14,13 +13,22 @@
     <link rel="stylesheet" href="../OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <script src="../JavaScript/OwlCarouselAnimals.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../JavaScript/PetExpenseCalculator.js"></script>
+     <script src="https://api-maps.yandex.ru/2.1/?apikey=cfb238a0-837f-4ac4-90ba-5cce193df10d&lang=ru_RU&onload=initYandexMap"></script>
+
 </head>
 
 <body>
 
     <header>
         <div class="logo"><img src="../images/BirAndLogo.png" alt="Логотип компании"></div>
+        <div class="theme-switcher">
+            <span class="theme-icon"><i class="fas fa-sun"></i></span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
+        </div>
         <div class="burger-menu">
             <div class="burger-line"></div>
             <div class="burger-line"></div>
@@ -62,7 +70,7 @@
 
                 <div class="contact-card">
                     <h2>📍 Адрес</h2>
-                    <p>г. Москва, ул. Питомцева, 15</p>
+                    <p>г. Иркутск, ул. Гагарина, 20</p>
                     <p>Офис 304 (3 этаж)</p>
                 </div>
             </div>
@@ -80,8 +88,6 @@
                 <div id="yandex-map-irkt"
                     style="width: 100%; height: 400px; margin: 20px 0; border: 1px solid #ccc; border-radius: 8px;">
                 </div>
-
-                <script src="https://api-maps.yandex.ru/2.1/?apikey=cfb238a0-837f-4ac4-90ba-5cce193df10d&lang=ru_RU&onload=initYandexMap"></script>
             </div>
         </div>
 
@@ -106,7 +112,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>

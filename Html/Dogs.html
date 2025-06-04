@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Friend - Собаки</title>
     <link href="../Css/Main_page.css" type="text/css" rel="stylesheet" media="screen">
-    <link href="../JavaScript/Main_page.js" type="text/javascript" rel="stylesheet" media="screen">
     <script src="../JavaScript/Main_page.js"></script>
     <link rel="shortcut icon" href="../images/BirdForHeader.png">
     <script src="../JavaScript/jquery-3.7.1.min.js"></script>
@@ -14,13 +13,20 @@
     <link rel="stylesheet" href="../OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <script src="../JavaScript/OwlCarouselAnimals.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../JavaScript/PetExpenseCalculator.js"></script>
 </head>
 
 <body data-page="dogs">
 
     <header>
         <div class="logo"><img src="../images/BirAndLogo.png" alt="Логотип компании"></div>
+        <div class="theme-switcher">
+            <span class="theme-icon"><i class="fas fa-sun"></i></span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="theme-icon"><i class="fas fa-moon"></i></span>
+        </div>
         <div class="burger-menu">
             <div class="burger-line"></div>
             <div class="burger-line"></div>
@@ -60,7 +66,7 @@
 
             <div class="footer-column">
                 <h3>Информация</h3>
-                 <a href="What_is.html" class="footer-link">Что такое Little Friend?</a>
+                <a href="What_is.html" class="footer-link">Что такое Little Friend?</a>
                 <div class="social-icons">
                     <a href="https://dzen.ru/knigajivotnih"><img src="../images/IconDzen.png" alt="Dzen"></a>
                     <a href="https://t.me/s/animals_n1"><img src="../images/IconTelegram.png" alt="Telegram"></a>
